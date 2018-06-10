@@ -45,14 +45,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Controllers\OrganizationFormController.cs" />
+    <Compile Include="Controllers\NewDepartmentFormController.cs" />
+    <Compile Include="Controllers\NewEmployeeFormController.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\DepartmentType.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\FullName.cs" />
+    <Compile Include="Model\Organization.cs" />
+    <Compile Include="Model\OrgInit.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\PhoneNumber.cs" />
+    <Compile Include="Model\Salary.cs" />
+    <Compile Include="Model\Serializer.cs" />
+    <Compile Include="View\NewDepartmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\NewDepartmentForm.Designer.cs">
+      <DependentUpon>NewDepartmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrganizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\OrganizationForm.Designer.cs">
+      <DependentUpon>OrganizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NewEmployeeForm.Designer.cs">
+      <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\NewDepartmentForm.resx">
+      <DependentUpon>NewDepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OrganizationForm.resx">
+      <DependentUpon>OrganizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NewEmployeeForm.resx">
+      <DependentUpon>NewEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +97,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Lab3.DTO.AddressDto.datasource" />
+    <None Include="Properties\DataSources\Lab3.DTO.DepartmentDto.datasource" />
+    <None Include="Properties\DataSources\Lab3.DTO.EmployeeDto.datasource">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Lab3.DTO.FullNameDto.datasource" />
+    <None Include="Properties\DataSources\Lab3.DTO.OrganizationDto.datasource" />
+    <None Include="Properties\DataSources\Lab3.DTO.PhoneNumberDto.datasource" />
+    <None Include="Properties\DataSources\Lab3.DTO.SalaryDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -71,9 +115,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
