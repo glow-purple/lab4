@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Lab4.Model;
 using Lab4.View;
 
@@ -12,10 +14,11 @@ namespace Lab4.Controllers
         public List<Department> Departments =>_organization?.Departments?? new List<Department>();
         public Department SelectedDepartment { get; set; }
         public List<Employee> Employees => SelectedDepartment?.Employees??new List<Employee>();
-        public string OrgInfo => $"{ _organization } { _organization.Address}, { _organization.Phone}";
-        public string Report => $"Organization has {_organization.CountEmployees()} employee(s) in {_organization.Departments.Count}" +
-                                $" departments with average salary {Departments.Sum(d => d.GetAverageSalary())/Departments.Count:c}";
-
+        public string OrgInfo => IsSet ? $"{ _organization } { _organization.Address}, { _organization.Phone}" : " ";
+        public string Report => IsSet ? $"Organization has {_organization.CountEmployees()} employee(s) in {_organization.Departments.Count}" +
+                                $" departments with average salary {Departments.Sum(d => d.GetAverageSalary())/Departments.Count:c}" : " ";
+        
+        private bool IsSet => _organization!=null;
 
         public OrganizationFormController()
         {
@@ -27,6 +30,16 @@ namespace Lab4.Controllers
             Organization test = new Organization("Test");
             OrgInit.InitializeOrganization(test);
             _organization = test;
+        }
+
+        public void AddEmployee(Employee newEmployee)
+        {
+            SelectedDepartment.AddEmployee(newEmployee);
+        }
+
+        public void AddDepartment(Department newDepartment)
+        {
+            _organization.AddDepartment(newDepartment);
         }
 
         public void SelectDepartment(string id)

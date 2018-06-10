@@ -58,7 +58,6 @@
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\PhoneNumber.cs" />
     <Compile Include="Model\Salary.cs" />
-    <Compile Include="Model\Serializer.cs" />
     <Compile Include="View\NewDepartmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,15 +96,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\DataSources\Lab3.DTO.AddressDto.datasource" />
-    <None Include="Properties\DataSources\Lab3.DTO.DepartmentDto.datasource" />
-    <None Include="Properties\DataSources\Lab3.DTO.EmployeeDto.datasource">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\DataSources\Lab3.DTO.FullNameDto.datasource" />
-    <None Include="Properties\DataSources\Lab3.DTO.OrganizationDto.datasource" />
-    <None Include="Properties\DataSources\Lab3.DTO.PhoneNumberDto.datasource" />
-    <None Include="Properties\DataSources\Lab3.DTO.SalaryDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

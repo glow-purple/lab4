@@ -1,6 +1,6 @@
 ﻿namespace Lab4.View
 {
-    partial class organizationForm
+    partial class OrganizationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -300,7 +300,7 @@
             this.removeEmpButton.UseVisualStyleBackColor = true;
             this.removeEmpButton.Click += new System.EventHandler(this.removeEmpButton_Click);
             // 
-            // organizationForm
+            // OrganizationForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -320,7 +320,7 @@
             this.MaximumSize = new System.Drawing.Size(2100, 1300);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(2100, 1300);
-            this.Name = "organizationForm";
+            this.Name = "OrganizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Organization";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

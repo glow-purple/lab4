@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 using Lab4.Controllers;
+using Lab4.Model;
 
 namespace Lab4.View
 {
-    public partial class organizationForm : Form
+    public partial class OrganizationForm : Form
     {
         private OrganizationFormController _controller;
         public event EventHandler UpdateForm;
 
-        public organizationForm()
+        public OrganizationForm(OrganizationFormController controller)
         {
             InitializeComponent();
-            _controller = new OrganizationFormController();
+            _controller = controller;
             UpdateForm += OnUpdateForm;
         }
 
@@ -82,8 +83,13 @@ namespace Lab4.View
 
         private void newDepartmentButton_Click(object sender, EventArgs e)
         {
-            var newDepartmentForm = new NewDepartmentForm(_controller.Departments, _controller.CityCode);
-            newDepartmentForm.ShowDialog();
+            var newDepartmentController = new NewDepartmentFormController(_controller.Departments, _controller.CityCode);
+            var newDepartmentForm = new NewDepartmentForm(newDepartmentController);
+            if (newDepartmentForm.ShowDialog() == DialogResult.OK)
+            {
+                var newDepartment = newDepartmentController.Department;
+                _controller.AddDepartment(newDepartment);
+            }
             UpdateForm?.Invoke(this, e);
         }
 
@@ -97,8 +103,15 @@ namespace Lab4.View
         private void newEmployeeButton_Click(object sender, EventArgs e)
         {
             if (_controller.SelectedDepartment == null) return;
-            var newEmployeeForm = new NewEmployeeForm(_controller.SelectedDepartment);
-            newEmployeeForm.ShowDialog();
+
+            var newEmployeeController = new NewEmployeeFormController();
+            var newEmployeeForm = new NewEmployeeForm(newEmployeeController);
+
+            if (newEmployeeForm.ShowDialog() == DialogResult.OK)
+            {
+                var newEmployee = newEmployeeController.Employee;
+                _controller.AddEmployee(newEmployee);
+            }
             ShowEmployees();
         }
 

@@ -101,6 +101,7 @@
             this.depTypeComboBox.Name = "depTypeComboBox";
             this.depTypeComboBox.Size = new System.Drawing.Size(479, 39);
             this.depTypeComboBox.TabIndex = 18;
+            this.depTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.depTypeComboBox_SelectedIndexChanged);
             // 
             // cancelButton
             // 
@@ -116,6 +117,7 @@
             // 
             // addButton
             // 
+            this.addButton.Enabled = false;
             this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.addButton.Location = new System.Drawing.Point(264, 577);
             this.addButton.Name = "addButton";
@@ -133,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(942, 881);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

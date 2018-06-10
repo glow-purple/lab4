@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
-            this.DayComboBox = new System.Windows.Forms.ComboBox();
-            this.MonthComboBox = new System.Windows.Forms.ComboBox();
-            this.YearComboBox = new System.Windows.Forms.ComboBox();
+            this.dayComboBox = new System.Windows.Forms.ComboBox();
+            this.monthComboBox = new System.Windows.Forms.ComboBox();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.positionTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -70,32 +70,38 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // DayComboBox
+            // dayComboBox
             // 
-            this.DayComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.DayComboBox.FormattingEnabled = true;
-            this.DayComboBox.Location = new System.Drawing.Point(603, 452);
-            this.DayComboBox.Name = "DayComboBox";
-            this.DayComboBox.Size = new System.Drawing.Size(94, 46);
-            this.DayComboBox.TabIndex = 5;
+            this.dayComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dayComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.dayComboBox.FormattingEnabled = true;
+            this.dayComboBox.Location = new System.Drawing.Point(603, 452);
+            this.dayComboBox.Name = "dayComboBox";
+            this.dayComboBox.Size = new System.Drawing.Size(94, 46);
+            this.dayComboBox.TabIndex = 5;
+            this.dayComboBox.SelectedIndexChanged += new System.EventHandler(this.dayComboBox_SelectedIndexChanged);
             // 
-            // MonthComboBox
+            // monthComboBox
             // 
-            this.MonthComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.MonthComboBox.FormattingEnabled = true;
-            this.MonthComboBox.Location = new System.Drawing.Point(457, 452);
-            this.MonthComboBox.Name = "MonthComboBox";
-            this.MonthComboBox.Size = new System.Drawing.Size(120, 46);
-            this.MonthComboBox.TabIndex = 4;
+            this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monthComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.monthComboBox.FormattingEnabled = true;
+            this.monthComboBox.Location = new System.Drawing.Point(457, 452);
+            this.monthComboBox.Name = "monthComboBox";
+            this.monthComboBox.Size = new System.Drawing.Size(120, 46);
+            this.monthComboBox.TabIndex = 4;
+            this.monthComboBox.SelectedIndexChanged += new System.EventHandler(this.monthComboBox_SelectedIndexChanged);
             // 
-            // YearComboBox
+            // yearComboBox
             // 
-            this.YearComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.YearComboBox.FormattingEnabled = true;
-            this.YearComboBox.Location = new System.Drawing.Point(298, 452);
-            this.YearComboBox.Name = "YearComboBox";
-            this.YearComboBox.Size = new System.Drawing.Size(122, 46);
-            this.YearComboBox.TabIndex = 3;
+            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yearComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Location = new System.Drawing.Point(275, 452);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(145, 46);
+            this.yearComboBox.TabIndex = 3;
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
             // 
             // positionTextBox
             // 
@@ -143,9 +149,9 @@
             this.panel1.Controls.Add(this.addButton);
             this.panel1.Controls.Add(this.lastNameTextBox);
             this.panel1.Controls.Add(this.positionTextBox);
-            this.panel1.Controls.Add(this.DayComboBox);
-            this.panel1.Controls.Add(this.YearComboBox);
-            this.panel1.Controls.Add(this.MonthComboBox);
+            this.panel1.Controls.Add(this.dayComboBox);
+            this.panel1.Controls.Add(this.yearComboBox);
+            this.panel1.Controls.Add(this.monthComboBox);
             this.panel1.Location = new System.Drawing.Point(-3, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(940, 879);
@@ -221,6 +227,7 @@
             this.AcceptButton = this.addButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(932, 884);
             this.Controls.Add(this.panel1);
@@ -236,9 +243,9 @@
 
         #endregion
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.ComboBox DayComboBox;
-        private System.Windows.Forms.ComboBox MonthComboBox;
-        private System.Windows.Forms.ComboBox YearComboBox;
+        private System.Windows.Forms.ComboBox dayComboBox;
+        private System.Windows.Forms.ComboBox monthComboBox;
+        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.TextBox positionTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;

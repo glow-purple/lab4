@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Lab4.Controllers;
+using Lab4.Model;
 using Lab4.View;
 
 namespace Lab4
@@ -12,9 +14,10 @@ namespace Lab4
         [STAThread]
         static void Main()
         {
+            OrganizationFormController controller = new OrganizationFormController();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new organizationForm());
+            Application.Run(new OrganizationForm(controller));
         }
     }
 }

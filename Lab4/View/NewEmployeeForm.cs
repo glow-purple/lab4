@@ -4,35 +4,38 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Lab4.Controllers;
-using Lab4.Model;
 
 namespace Lab4
 {
     public partial class NewEmployeeForm : Form
     {
-        private NewEmployeeFormController _controller;
+        private readonly NewEmployeeFormController _controller;
 
-        public NewEmployeeForm(Department selectedDepartment)
+        public NewEmployeeForm(NewEmployeeFormController controller)
         {
             InitializeComponent();
-            _controller = new NewEmployeeFormController(selectedDepartment);
+            _controller = controller;
 
-            YearComboBox.Items.AddRange(Enumerable.Range(1950, 50).Cast<object>().ToArray());
-            MonthComboBox.Items.AddRange(Enumerable.Range(1, 12).Cast<object>().ToArray());
-            DayComboBox.Items.AddRange(Enumerable.Range(1, 30).Cast<object>().ToArray());
+            yearComboBox.Items.AddRange(Enumerable.Range(1950, 50).Cast<object>().ToArray());
+            monthComboBox.Items.AddRange(Enumerable.Range(1, 12).Cast<object>().ToArray());
+            dayComboBox.Items.AddRange(Enumerable.Range(1, 30).Cast<object>().ToArray());
+            _controller.PropertyChanged += _controller_PropertyChanged;
         }
-        
+
+        private void _controller_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(_controller.CanSave))
+                addButton.Enabled = _controller.CanSave;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             try
             {
-                _controller.AddNewEmployee(firstNameTextBox.Text, lastNameTextBox.Text,
-                    (int) YearComboBox.SelectedItem,
-                    (int) MonthComboBox.SelectedItem,
-                    (int) DayComboBox.SelectedItem, positionTextBox.Text);
+                DialogResult = DialogResult.OK;
                 Close();
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Fill in all fields");
             }
@@ -73,21 +76,39 @@ namespace Lab4
         private void firstNameTextBox_Validated(object sender, EventArgs e)
         {
             errorProvider1.SetError(firstNameTextBox, "");
+            _controller.FirstName = firstNameTextBox.Text;
         }
 
         private void lastNameTextBox_Validated(object sender, EventArgs e)
         {
             errorProvider1.SetError(lastNameTextBox, "");
+            _controller.LastName = lastNameTextBox.Text;
         }
 
         private void positionTextBox_Validated(object sender, EventArgs e)
         {
             errorProvider1.SetError(positionTextBox, "");
+            _controller.Position = positionTextBox.Text;
         }
 
         static bool ValidateString(string input)
         {
             return Regex.IsMatch(input, @"^[a-zA-Z]+$");
+        }
+
+        private void yearComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _controller.Year = yearComboBox.SelectedItem as int?;
+        }
+
+        private void monthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _controller.Month = monthComboBox.SelectedItem as int?;
+        }
+
+        private void dayComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _controller.Day = dayComboBox.SelectedItem as int?;
         }
     }
 }
